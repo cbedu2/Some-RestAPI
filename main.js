@@ -29,7 +29,8 @@ var options = {
     key: fs.readFileSync(certs.key),
     cert: fs.readFileSync(certs.cert),
 };
-var server = https.createServer(options, app).listen(express.port, function(){
+
+https.createServer(options, app).listen(express.port, function(){
     console.log("Express server listening on port " + express.port);
 });
 
