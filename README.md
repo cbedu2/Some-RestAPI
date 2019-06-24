@@ -21,10 +21,6 @@
   "certs": {
     "key": "./put/cert/key/path/here",
     "cert": "./put/cert/path/here"
-  },
-  "mcstat": {
-    "domain": "minecraft.server.com",
-    "port": "25565"
   }
 }
 ```
