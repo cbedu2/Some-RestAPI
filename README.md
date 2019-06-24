@@ -11,6 +11,13 @@
   ```
   
 3 Generate SSL certificates
+
+   references
+  
+    https://www.sslforfree.com/
+  
+    https://www.howtogeek.com/107415/it-how-to-create-a-self-signed-security-ssl-certificate-and-deploy-it-to-client-machines/
+  
   
 4 Edit ./config/config.json
   ```json
