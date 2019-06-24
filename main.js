@@ -1,12 +1,11 @@
 // For use with Node.js
-const ms = require('./minestat');
 const fs = require('fs');
 const bodyParser = require("body-parser");
 const app = require('express')();
 const morgan = require('morgan');
 const http = require("http");
 const https = require("https");
-const {express, certs, mcstat} = JSON.parse(fs.readFileSync('config/config.json', 'utf-8'));
+const {express, certs} = JSON.parse(fs.readFileSync('config/config.json', 'utf-8'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
