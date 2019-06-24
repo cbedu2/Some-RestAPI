@@ -36,20 +36,10 @@ https.createServer(options, app).listen(express.port, function(){
 
 app.all('*', ensureSecure); // at top of routing calls
 
-app.get('/mc/status',(req, res) =>{
-    ms.init(mcstat.domain, mcstat.port, function(err, result)
-    {
-        if (err !== undefined){
-            console.log(err);
-            res.setHeader('Content-Type', 'text/html');
-            res.writeHead(500);
-            res.end("<h1>Some 500 ERROR has occured</h1>");
-        }else {
-            res.setHeader('Content-Type', 'application/json');
-            res.writeHead(200);
-            res.end(JSON.stringify(result));
-        }
-    });
+app.get('/',(req, res) =>{
+    res.setHeader('Content-Type', 'text/html');
+    res.writeHead(200);
+    res.end("<h1>Hello World!</h1>");
 });
 
 
