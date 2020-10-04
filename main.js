@@ -14,25 +14,30 @@ app.set('trust proxy', true);
 const accessLogStream = fs.createWriteStream('./logs/access.log', {flags: 'a'});
 app.use(morgan('combined',  {"stream": accessLogStream}));
 
-function ensureSecure(req, res, next){
-    if(req.secure){
-        // OK, continue
-        return next();
-    };
-    res.redirect('https://' + req.hostname + req.url); // express 4.x
-}
+//create http server
+http.createServer(app).listen(express.port.http, function () {
+    console.log("Express server listening on port " + express.port.http);
+});
 
-http.createServer(app).listen(80);
-
-var options = {
+const options = {
     key: fs.readFileSync(certs.key),
     cert: fs.readFileSync(certs.cert),
 };
 
-https.createServer(options, app).listen(express.port, function(){
-    console.log("Express server listening on port " + express.port);
+//create https server with ssl
+https.createServer(options, app).listen(express.port.https, function(){
+    console.log("Express server listening on port " + express.port.https);
 });
 
+//redirects http requests to https
+function ensureSecure(req, res, next){
+    if(req.secure){
+        return next();
+    };
+    res.redirect('https://' + req.hostname + req.url);
+}
+
+//captures all requests and enforce redirects from http to https
 app.all('*', ensureSecure); // at top of routing calls
 
 app.get('/',(req, res) =>{

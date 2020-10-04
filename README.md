@@ -1,11 +1,14 @@
 #Some RestAPI
 
-### To run
 
+## Easy run and test
+run `./dev_init`
+
+### Steps to run
 1 Install dependencies
 * node/npm
 
-2 Intall node dependencies  run   
+2 Install node dependencies  run   
  ```bash
     $ npm install
   ```
@@ -23,11 +26,14 @@
   ```json
 {
   "express": {
-    "port": 443
+    "port": {
+      "http": 80,
+      "https": 443
+    }
   },
   "certs": {
-    "key": "./put/cert/key/path/here",
-    "cert": "./put/cert/path/here"
+    "key": "./certs/key.pem",
+    "cert": "./certs/cert.pem"
   }
 }
 ```
