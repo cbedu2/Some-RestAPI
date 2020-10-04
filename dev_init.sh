@@ -1,4 +1,4 @@
-  cd certs
+cd certs
 ip_addrs=$(hostname -I)
 ip_addrs=($ip_addrs)
 default_addr=${ip_addrs[0]}
